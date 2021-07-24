@@ -8,7 +8,7 @@ const VISITOR = 'team2goals'
 
 const getTotalGoalsForAllMatches = (matches, team) => {
     let goals = 0;
-    for (var match of matches) {
+    for (const match of matches) {
         goals += parseInt(match[team]);
     }
     return goals;
