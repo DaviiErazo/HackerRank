@@ -52,7 +52,7 @@ const sortAsc = (numbers) => {
 };
 
 const allNumbersFrequency = numbersFrequency(numbers);
-let [repeatingNumbers, noRepeatingNumbers] = spliteArrayByRepeatingNumbers(numbers, allNumbersFrequency);
+const [repeatingNumbers, noRepeatingNumbers] = spliteArrayByRepeatingNumbers(numbers, allNumbersFrequency);
 
 const repeatingNumbersFrequency = numbersFrequency(repeatingNumbers);
 
