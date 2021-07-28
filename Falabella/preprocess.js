@@ -52,7 +52,7 @@ const DaysEnum = {
 };
 Object.freeze(DaysEnum);
 
-const clearDays = (day) => {
+const clearDay = (day) => {
   let dayFormated = day.slice(0, -2);
   if (dayFormated.length < 2) {
     return `0${dayFormated}`;
@@ -64,7 +64,7 @@ for (let i = 0; i < dates.length; i++) {
   const date = dates[i];
 
   const [day, moth, year] = date.split(" ");
-  const dayFormated = clearDays(day);
+  const dayFormated = clearDay(day);
   const monthNumber = DaysEnum[moth];
   
   const fulldate = `${year}-${monthNumber}-${dayFormated}`;
