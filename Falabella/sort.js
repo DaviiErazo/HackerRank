@@ -14,12 +14,12 @@
  *  - The array of items sorted by quantity and then by value in ascernding order is [3, 6, 4, 4, 5, 5]
  */
 
-const numbers = [2, 3, 5, 5, 5, 1, 1, 6, 4, 4, 4, 3, 3, 3, 3];
+const items = [2, 3, 5, 5, 5, 1, 1, 6, 4, 4, 4, 3, 3, 3, 3];
 
-const numbersFrequency = (numbers) => {
-  const frequency = numbers.reduce((frequencyMap, number) => {
-    if (!frequencyMap[number]) frequencyMap[number] = 1;
-    else frequencyMap[number]++;
+const itemsFrequency = (items) => {
+  const frequency = items.reduce((frequencyMap, item) => {
+    if (!frequencyMap[item]) frequencyMap[item] = 1;
+    else frequencyMap[item]++;
 
     return frequencyMap;
   }, {});
@@ -27,36 +27,40 @@ const numbersFrequency = (numbers) => {
   return frequency;
 };
 
-const spliteArrayByRepeatingNumbers = (numbers, allNumberFrequency) => {
-  let repeatingNumbers = [];
-  let noRepeatingNumbers = [];
+const spliteArrayByRepeatingItems = (items, allItemFrequency) => {
+  let repeatingItems = [];
+  let noRepeatingItems = [];
 
-  for (i = 0; i < numbers.length; i++) {
-    const number = numbers[i];
+  for (i = 0; i < items.length; i++) {
+    const item = items[i];
 
-    if (allNumberFrequency[number] > 1) repeatingNumbers.push(number);
-    else noRepeatingNumbers.push(number);
+    if (allItemFrequency[item] > 1) repeatingItems.push(item);
+    else noRepeatingItems.push(item);
   }
 
-  return [repeatingNumbers, noRepeatingNumbers];
+  return [repeatingItems, noRepeatingItems];
 };
 
-const sortByFrequency = (numbers, frequency) => {
-  return [...numbers].sort((a, b) => {
+const sortByFrequency = (items, frequency) => {
+  return [...items].sort((a, b) => {
     return frequency[b] - frequency[a] || b - a;
   });
 };
 
-const sortAsc = (numbers) => {
-  return [...numbers].sort((a, b) => (a < b ? 1 : -1));
+const sortAsc = (items) => {
+  return [...items].sort((a, b) => (a < b ? 1 : -1));
 };
 
-const allNumbersFrequency = numbersFrequency(numbers);
-const [repeatingNumbers, noRepeatingNumbers] = spliteArrayByRepeatingNumbers(numbers, allNumbersFrequency);
+const itemsSort = (items) => {
+  const allItemsFrequency = itemsFrequency(items);
+  const [repeatingItems, noRepeatingItems] = spliteArrayByRepeatingItems(items, allItemsFrequency);
 
-const repeatingNumbersFrequency = numbersFrequency(repeatingNumbers);
+  const repeatingItemsFrequency = itemsFrequency(repeatingItems);
 
-const repeatingNumbersSorted = sortByFrequency(repeatingNumbers, repeatingNumbersFrequency);
-const noRepeatingNumbersSorted = sortAsc(noRepeatingNumbers);
+  const repeatingItemsSorted = sortByFrequency(repeatingItems, repeatingItemsFrequency);
+  const noRepeatingItemsSorted = sortAsc(noRepeatingItems);
 
-console.log([...noRepeatingNumbersSorted, ...repeatingNumbersSorted]);
+  return [...noRepeatingItemsSorted, ...repeatingItemsSorted];
+};
+
+console.log(itemsSort(items));
