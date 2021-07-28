@@ -54,7 +54,7 @@ Object.freeze(DaysEnum);
 
 const clearDay = (day) => {
   let dayFormated;
-  let dayWithoutLetters = day.slice(0, -2);
+  const dayWithoutLetters = day.slice(0, -2);
 
   if (dayWithoutLetters.length < 2) dayFormated = `0${dayWithoutLetters}`;
   else dayFormated = dayWithoutLetters;
