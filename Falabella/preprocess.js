@@ -56,7 +56,7 @@ const clearDay = (day) => {
   let dayFormated;
   const dayWithoutLetters = day.slice(0, -2);
 
-  if (dayWithoutLetters.length == 1) dayFormated = `0${dayWithoutLetters}`;
+  if (dayWithoutLetters.length === 1) dayFormated = `0${dayWithoutLetters}`;
   else dayFormated = dayWithoutLetters;
 
   return dayFormated;
