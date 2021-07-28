@@ -27,7 +27,7 @@ const numbersFrequency = (numbers) => {
   return frequency;
 };
 
-const spliteArrays = (numbers, allNumberFrequency) => {
+const spliteArrayByRepeatingNumbers = (numbers, allNumberFrequency) => {
   let repeatingNumbers = [];
   let noRepeatingNumbers = [];
 
@@ -52,7 +52,7 @@ const sortAsc = (numbers) => {
 };
 
 const allNumbersFrequency = numbersFrequency(numbers);
-let [repeatingNumbers, noRepeatingNumbers] = spliteArrays(numbers, allNumbersFrequency);
+let [repeatingNumbers, noRepeatingNumbers] = spliteArrayByRepeatingNumbers(numbers, allNumbersFrequency);
 
 const repeatingNumbersFrequency = numbersFrequency(repeatingNumbers);
 
