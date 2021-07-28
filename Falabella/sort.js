@@ -54,9 +54,9 @@ const sortAsc = (numbers) => {
 const allNumbersFrequency = numbersFrequency(numbers);
 let [repeatingNumbers, noRepeatingNumbers] = spliteArrays(numbers, allNumbersFrequency);
 
-const allNumberFrequencyRepeated = numbersFrequency(repeatingNumbers);
+const repeatingNumbersFrequency = numbersFrequency(repeatingNumbers);
 
-const numbersRepeatSorted = sortByFrequency(repeatingNumbers, allNumberFrequencyRepeated);
+const numbersRepeatSorted = sortByFrequency(repeatingNumbers, repeatingNumbersFrequency);
 noRepeatingNumbers = sortAsc(noRepeatingNumbers);
 
 console.log([...noRepeatingNumbers, ...numbersRepeatSorted]);
