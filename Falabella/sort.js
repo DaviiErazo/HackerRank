@@ -15,41 +15,48 @@
  */
 
 const numbers = [2, 3, 5, 5, 5, 1, 1, 6, 4, 4, 4, 3, 3, 3, 3];
-let numbersRepeat = [];
-let numbersNotRepeat = [];
-let counters = [];
 
-const numbersFrencuecy = (numbers) => {
-  const freq = numbers.reduce((r, e) => {
-    if (!r[e]) r[e] = 1;
-    else r[e]++;
-    return r;
+const numbersFrequency = (numbers) => {
+  const frequency = numbers.reduce((frequencyMap, number) => {
+    if (!frequencyMap[number]) frequencyMap[number] = 1;
+    else frequencyMap[number]++;
+
+    return frequencyMap;
   }, {});
 
+  return frequency;
+};
+
+const spliteArrays = (numbers, allNumberFrequency) => {
+  let repeatingNumbers = [];
+  let noRepeatingNumbers = [];
+
+  for (i = 0; i < numbers.length; i++) {
+    const number = numbers[i];
+
+    if (allNumberFrequency[number] > 1) repeatingNumbers.push(number);
+    else noRepeatingNumbers.push(number);
+  }
+
+  return [repeatingNumbers, noRepeatingNumbers];
+};
+
+const sortByFrequency = (numbers, frequency) => {
   return [...numbers].sort((a, b) => {
-    return freq[b] - freq[a] || b - a;
+    return frequency[b] - frequency[a] || b - a;
   });
 };
 
-for (i = 0; i < numbers.length; i++) {
-  const item = numbers[i];
-  if (!counters[item]) {
-    counters[item] = 1;
-  } else {
-    counters[item]++;
-  }
-}
+const sortAsc = (numbers) => {
+  return [...numbers].sort((a, b) => (a < b ? 1 : -1));
+};
 
-for (i = 0; i < numbers.length; i++) {
-  const index = numbers[i];
-  const item = counters[index];
-  if (item > 1) {
-    numbersRepeat.push(index);
-  } else {
-    numbersNotRepeat.push(index);
-  }
-}
+const allNumbersFrequency = numbersFrequency(numbers);
+let [repeatingNumbers, noRepeatingNumbers] = spliteArrays(numbers, allNumbersFrequency);
 
-numbersRepeat = numbersFrencuecy(numbersRepeat);
-numbersNotRepeat = numbersNotRepeat.sort((a, b) => (a < b ? 1 : -1));
-console.log([...numbersNotRepeat, ...numbersRepeat]);
+const allNumberFrequencyRepeated = numbersFrequency(repeatingNumbers);
+
+const numbersRepeatSorted = sortByFrequency(repeatingNumbers, allNumberFrequencyRepeated);
+noRepeatingNumbers = sortAsc(noRepeatingNumbers);
+
+console.log([...noRepeatingNumbers, ...numbersRepeatSorted]);
