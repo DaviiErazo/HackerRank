@@ -20,15 +20,15 @@ let numbersNotRepeat = [];
 let counters = [];
 
 const numbersFrencuecy = (numbers) => {
-    const freq = numbers.reduce((r, e) => {
-        if (!r[e]) r[e] = 1;
-        else r[e]++;
-        return r;
-    }, {});
+  const freq = numbers.reduce((r, e) => {
+    if (!r[e]) r[e] = 1;
+    else r[e]++;
+    return r;
+  }, {});
 
-    return [...numbers].sort((a, b) => {
-        return freq[b] - freq[a] || b - a
-    })
+  return [...numbers].sort((a, b) => {
+    return freq[b] - freq[a] || b - a;
+  });
 };
 
 for (i = 0; i < numbers.length; i++) {
@@ -51,5 +51,5 @@ for (i = 0; i < numbers.length; i++) {
 }
 
 numbersRepeat = numbersFrencuecy(numbersRepeat);
-numbersNotRepeat = numbersNotRepeat.sort((a, b) => a < b ? 1 : -1);
+numbersNotRepeat = numbersNotRepeat.sort((a, b) => (a < b ? 1 : -1));
 console.log([...numbersNotRepeat, ...numbersRepeat]);
